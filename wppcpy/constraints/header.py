@@ -1,14 +1,15 @@
 import re
 import os
 
-from wppcpy import constraints, filesystem, exceptions
+from wppcpy import filesystem, exceptions
+from wppcpy.constraints import base
 
 
-class HeaderRequirementConstraint(constraints.base.Constraint):
+class HeaderRequirementConstraint(base.Constraint):
     DOC_BLOCK_PATTERN = r'/\*(.*?)\*/'
 
     def __init__(self, path: str, requirement: str, main_file_name: str | list[str] = None):
-        main_file_name = os.path.join(path, os.path.basename(path) + ".php") \
+        main_file_name = os.path.basename(path) + ".php" \
             if main_file_name is None else main_file_name
 
         if isinstance(main_file_name, str):

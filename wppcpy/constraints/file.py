@@ -20,7 +20,7 @@ class MainFile(FileConstraint):
     def __init__(self, path: str, files: str | list[str] = None):
         super().__init__(path)
 
-        files = os.path.join(self._path, os.path.basename(self._path) + ".php") \
+        files = os.path.basename(self._path) + ".php" \
                if files is None else files
 
         if isinstance(files, str):
